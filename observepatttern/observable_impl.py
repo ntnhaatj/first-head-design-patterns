@@ -1,12 +1,12 @@
 from typing import List, Any
 from .models import WeatherData
-from .interfaces import Subject
+from .interfaces import Observable
 
 
 data_store: List[WeatherData] = list()
 
 
-class WeatherStation(Subject):
+class WeatherStation(Observable):
     def __init__(self):
         super().__init__()
         self.latest_data: WeatherData = None

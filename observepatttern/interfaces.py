@@ -12,11 +12,11 @@ class IDisplay(ABC):
 
 class Observer(ABC):
     """ Observer abstract class
-    Inherit and implement methods for integrating with Subject
+    Inherit and implement methods for integrating with Observable
     """
-    def __init__(self, subject: "Subject"):
-        self.subject = subject
-        self.subject.register_observer(self)
+    def __init__(self, observable: "Observable"):
+        self.observable = observable
+        self.observable.register_observer(self)
 
     @abstractmethod
     def update(self, data: Any):
@@ -24,7 +24,7 @@ class Observer(ABC):
         pass
 
 
-class Subject(ABC):
+class Observable(ABC):
     def __init__(self):
         self.observers: tuple[Observer] = tuple()
 

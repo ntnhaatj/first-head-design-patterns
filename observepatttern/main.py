@@ -1,5 +1,5 @@
 from observepatttern.observer_impl import *
-from observepatttern.subject_impl import *
+from observepatttern.observable_impl import *
 
 if __name__ == "__main__":
     data_publisher = WeatherStation()

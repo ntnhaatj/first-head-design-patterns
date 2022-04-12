@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Sequence, Any
 from .models import WeatherData, WeatherStatistic
-from .interfaces import IDisplay, Observer, Subject
-from .subject_impl import data_store
+from .interfaces import IDisplay, Observer, Observable
+from .observable_impl import data_store
 
 
 class DisplayObserverBase(IDisplay, Observer, ABC):
@@ -16,8 +16,8 @@ class DisplayObserverBase(IDisplay, Observer, ABC):
 
 
 class CurrentStatsDisplay(DisplayObserverBase):
-    def __init__(self, subject: Subject):
-        Observer.__init__(self, subject)
+    def __init__(self, observable: Observable):
+        Observer.__init__(self, observable)
 
     @classmethod
     def display(cls, data: str):
