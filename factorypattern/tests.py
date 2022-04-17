@@ -1,7 +1,7 @@
 import unittest
 
-from factorypattern.models import Fruit, Apple, Orange
-from factorypattern import simple_factory, factory_method
+from factorypattern.models import Fruit, Apple, Orange, OrganicApple, NonOrganicApple
+from factorypattern import simple_factory, factory_method, abstract_factory
 
 
 class FactoryPatternsTestCase(unittest.TestCase):
@@ -20,6 +20,17 @@ class FactoryPatternsTestCase(unittest.TestCase):
         self.assertEqual(
             Apple('red', 1.0, state='peeled'),
             factory_method.AppleExporter.process_fruit('red', 1.0),
+        )
+
+    def test_abstract_factory(self):
+        self.assertEqual(
+            OrganicApple('red', 1.0),
+            abstract_factory.OrganicAppleExporter.harvest_fruit('red', 1.0),
+        )
+
+        self.assertEqual(
+            NonOrganicApple('red', 1.0),
+            abstract_factory.NonOrganicAppleExporter.harvest_fruit('red', 1.0),
         )
 
 

@@ -17,3 +17,43 @@ class Apple(Fruit):
 @dataclass
 class Orange(Fruit):
     name = 'Orange'
+
+
+@dataclass
+class OrganicMixin:
+    is_organic = True
+
+
+@dataclass
+class NonOrganicMixin:
+    is_organic = False
+
+
+@dataclass
+class OrganicFruit(Fruit, OrganicMixin):
+    pass
+
+
+@dataclass
+class NonOrganicFruit(Fruit, NonOrganicMixin):
+    pass
+
+
+@dataclass
+class OrganicApple(OrganicFruit):
+    name = 'Apple'
+
+
+@dataclass
+class OrganicOrange(OrganicFruit):
+    name = 'Orange'
+
+
+@dataclass
+class NonOrganicApple(NonOrganicFruit):
+    name = 'Apple'
+
+
+@dataclass
+class NonOrganicOrange(NonOrganicFruit):
+    name = 'Orange'
